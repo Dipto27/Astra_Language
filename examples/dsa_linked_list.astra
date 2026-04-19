@@ -1,0 +1,63 @@
+-- ═══════════════════════════════════════════
+-- Astra Example: Singly Linked List
+-- ═══════════════════════════════════════════
+
+struct Node {
+    val: int
+    next: none  -- Will hold either another Node or none
+}
+
+impl Node {
+    fn init(self, val) {
+        self.val = val
+        self.next = none
+    }
+}
+
+struct LinkedList {
+    head: none
+}
+
+impl LinkedList {
+    fn init(self) {
+        self.head = none
+    }
+
+    -- Insert at the back O(N)
+    fn append(self, val) {
+        let new_node = Node(val)
+        
+        if self.head == none {
+            self.head = new_node
+            return none
+        }
+
+        mut current = self.head
+        while current.next != none {
+            current = current.next
+        }
+        current.next = new_node
+    }
+
+    -- Print the entire list O(N)
+    fn display(self) {
+        mut current = self.head
+        mut result = ""
+        
+        while current != none {
+            result = result + str(current.val) + " -> "
+            current = current.next
+        }
+        result = result + "none"
+        println(result)
+    }
+}
+
+-- Testing the Linked List
+let my_list = LinkedList()
+my_list.append(10)
+my_list.append(20)
+my_list.append(30)
+
+println("Linked List Traversal:")
+my_list.display()

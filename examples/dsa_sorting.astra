@@ -1,0 +1,40 @@
+-- ═══════════════════════════════════════════
+-- Astra Example: Quick Sort Algorithm
+-- ═══════════════════════════════════════════
+
+-- A classic Quick Sort implementation demonstrating Lists and slicing mechanics in Astra.
+-- Time Complexity: O(N log N) Average, O(N^2) Worst
+
+fn quick_sort(arr) {
+    -- Base case: arrays with 0 or 1 element are already sorted
+    if len(arr) <= 1 {
+        return arr
+    }
+
+    -- Choose a pivot element (we'll use the last element)
+    let pivot = arr[-1]
+    
+    mut left = []
+    mut right = []
+    
+    -- Partitioning: Group elements strictly smaller than pivot to Left, larger/equal to Right
+    -- Iterate up to second-to-last element using lengths and ranges!
+    for i in range(len(arr) - 1) {
+        if arr[i] < pivot {
+            left.push(arr[i])
+        } else {
+            right.push(arr[i])
+        }
+    }
+    
+    -- Recursively sort sub-arrays and concatenate back together
+    return quick_sort(left) + [pivot] + quick_sort(right)
+}
+
+-- Testing the algorithm
+println("🚀 Quick Sort in Astra")
+let data = [38, 27, 43, 3, 9, 82, 10]
+println("Unsorted: " + str(data))
+
+let sorted_data = quick_sort(data)
+println("Sorted:   " + str(sorted_data))
