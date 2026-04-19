@@ -1,0 +1,31 @@
+# Compiled Object files
+*.o
+*.obj
+*.out
+
+# Generated Dependency files
+*.d
+
+# Compiled Output
+astra
+test_astra
+
+# OS Generated Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.swp
+*~
+*.bak
+
+# Build directories (if any exist later)
+build/
+bin/
