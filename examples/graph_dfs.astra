@@ -1,0 +1,43 @@
+-- ═══════════════════════════════════════════
+-- Astra Example: Graph Traversal (DFS)
+-- ═══════════════════════════════════════════
+
+-- Define a simple Graph using a Map (Adjacency List)
+let graph = {
+    "A": ["B", "C"],
+    "B": ["D", "E"],
+    "C": ["F"],
+    "D": [],
+    "E": ["F"],
+    "F": []
+}
+
+println("Graph Adjacency List: " + str(graph))
+println("------------------------------------")
+
+-- Keep track of visited nodes using a Map
+mut visited = {}
+
+-- Depth First Search using recursion and Closures!
+fn dfs(node, graph_map) {
+    if visited[node] == true {
+        return none
+    }
+    
+    println("Visiting Node: " + node)
+    visited[node] = true
+    
+    let neighbors = graph_map[node]
+    
+    -- Iterate through the dynamic array of neighbors
+    for neighbor in neighbors {
+        dfs(neighbor, graph_map)
+    }
+}
+
+-- Start DFS from Root Node 'A'
+println("Starting DFS from A:")
+dfs("A", graph)
+
+println("------------------------------------")
+println("All Visited Nodes: " + str(visited))
