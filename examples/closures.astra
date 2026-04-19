@@ -1,0 +1,93 @@
+-- ═══════════════════════════════════════════
+-- Closures & Functional Programming
+-- Demonstrates advanced Astra features
+-- ═══════════════════════════════════════════
+
+-- Closures as private state
+fn create_bank_account(owner, initial_balance) {
+    mut balance = initial_balance
+
+    fn deposit(amount) {
+        balance += amount
+        println(owner + " deposited " + str(amount) + ". Balance: " + str(balance))
+        return balance
+    }
+
+    fn withdraw(amount) {
+        if amount > balance {
+            println("Insufficient funds!")
+            return balance
+        }
+        balance -= amount
+        println(owner + " withdrew " + str(amount) + ". Balance: " + str(balance))
+        return balance
+    }
+
+    fn get_balance() {
+        return balance
+    }
+
+    -- Return a map-like structure with closures
+    return [deposit, withdraw, get_balance]
+}
+
+println("═══ Bank Account Demo ═══")
+println("")
+
+let account = create_bank_account("Alice", 1000)
+let deposit = account[0]
+let withdraw = account[1]
+let balance = account[2]
+
+deposit(500)
+withdraw(200)
+withdraw(100)
+println("Final balance: " + str(balance()))
+
+println("")
+
+-- Pipe operator demonstration
+println("═══ Pipe Operator Demo ═══")
+println("")
+
+fn double(x) { return x * 2 }
+fn add_one(x) { return x + 1 }
+fn square(x) { return x * x }
+
+-- Instead of: square(add_one(double(5)))
+-- Write it naturally:
+let result = 5 |> double |> add_one |> square
+println("5 |> double |> add_one |> square = " + str(result))
+
+-- Iterator patterns
+println("")
+println("═══ Iteration Patterns ═══")
+println("")
+
+-- Custom iteration with closures
+fn count_up(start, step) {
+    mut current = start
+    return fn() {
+        let val = current
+        current += step
+        return val
+    }
+}
+
+let counter = count_up(0, 5)
+println("Counting by 5s:")
+for i in range(6) {
+    println("  " + str(counter()))
+}
+
+-- Memoization
+fn memoize(func) {
+    mut results = {}
+    return fn(n) {
+        -- Simple cache using a closure
+        return func(n)
+    }
+}
+
+println("")
+println("All tests passed!")

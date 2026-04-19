@@ -1,0 +1,7 @@
+-- ═══════════════════════════════════════════
+-- Hello, Astra!
+-- The classic first program
+-- ═══════════════════════════════════════════
+
+println("Hello, World!")
+println("Welcome to Astra! ✦")

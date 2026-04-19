@@ -1,0 +1,102 @@
+-- ═══════════════════════════════════════════
+-- Todo List Manager
+-- Demonstrates structs, methods, and lists
+-- ═══════════════════════════════════════════
+
+struct Task {
+    title: str
+    done: bool
+    priority: int
+}
+
+impl Task {
+    fn init(self, title, priority) {
+        self.title = title
+        self.done = false
+        self.priority = priority
+    }
+
+    fn complete(self) {
+        self.done = true
+    }
+
+    fn display(self) {
+        let status = "[x]"
+        if not self.done {
+            status = "[ ]"
+        }
+        let stars = "*" * self.priority
+        return status + " " + self.title + " " + stars
+    }
+}
+
+struct TodoList {
+    name: str
+}
+
+impl TodoList {
+    fn init(self, name) {
+        self.name = name
+        self.tasks = []
+    }
+
+    fn add(self, title, priority) {
+        let task = Task(title, priority)
+        self.tasks.push(task)
+    }
+
+    fn complete_task(self, index) {
+        if index >= 0 and index < len(self.tasks) {
+            self.tasks[index].complete()
+        }
+    }
+
+    fn show(self) {
+        println("")
+        println("╭─── " + self.name + " ───╮")
+        println("│")
+
+        if len(self.tasks) == 0 {
+            println("│  No tasks yet!")
+        }
+
+        for pair in enumerate(self.tasks) {
+            let i = pair[0]
+            let task = pair[1]
+            println("│  " + str(i + 1) + ". " + task.display())
+        }
+
+        let done = 0
+        for task in self.tasks {
+            if task.done {
+                done = done + 1
+            }
+        }
+
+        println("│")
+        println("│  " + str(done) + "/" + str(len(self.tasks)) + " completed")
+        println("╰────────────────────╯")
+        println("")
+    }
+}
+
+-- Create a todo list
+let my_list = TodoList("My Tasks")
+
+-- Add some tasks
+my_list.add("Learn Astra", 3)
+my_list.add("Build a project", 2)
+my_list.add("Write documentation", 1)
+my_list.add("Deploy to production", 3)
+my_list.add("Celebrate!", 1)
+
+-- Show initial state
+my_list.show()
+
+-- Complete some tasks
+my_list.complete_task(0)
+my_list.complete_task(2)
+
+-- Show updated state
+println("After completing tasks:")
+my_list.show()

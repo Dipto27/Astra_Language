@@ -1,0 +1,53 @@
+-- ═══════════════════════════════════════════
+-- Astra Test: Basic Variables & Operations
+-- ═══════════════════════════════════════════
+
+-- Immutable variables
+let name = "Astra"
+let version = 1
+let pi = 3.14159
+
+-- Mutable variables
+mut counter = 0
+counter = counter + 1
+counter += 10
+
+-- Printing
+println("Hello from " + name + "!")
+println("Version: " + str(version))
+println("Counter: " + str(counter))
+println("Pi: " + str(pi))
+
+-- Boolean operations
+let is_ready = true
+let is_empty = false
+println("Ready: " + str(is_ready))
+println("Not empty: " + str(not is_empty))
+println("Both: " + str(is_ready and not is_empty))
+
+-- None
+let nothing = none
+println("Nothing: " + str(nothing))
+
+-- Integer arithmetic
+println("2 + 3 = " + str(2 + 3))
+println("10 - 4 = " + str(10 - 4))
+println("6 * 7 = " + str(6 * 7))
+println("10 / 3 = " + str(10 / 3))
+println("10 % 3 = " + str(10 % 3))
+println("2 ** 10 = " + str(2 ** 10))
+
+-- Type checking
+println("Type of 42: " + type(42))
+println("Type of 3.14: " + type(3.14))
+println("Type of true: " + type(true))
+println("Type of 'hi': " + type("hi"))
+println("Type of none: " + type(none))
+
+-- String operations
+let greeting = "Hello, World!"
+println("Length: " + str(len(greeting)))
+println("Upper: " + greeting.upper())
+println("Lower: " + greeting.lower())
+println("Contains 'World': " + str(greeting.contains("World")))
+println("Repeat: " + "ha" * 3)

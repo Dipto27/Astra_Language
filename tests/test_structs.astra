@@ -1,0 +1,94 @@
+-- ═══════════════════════════════════════════
+-- Astra Test: Structs & Methods
+-- ═══════════════════════════════════════════
+
+-- Define a struct
+struct Point {
+    x: int
+    y: int
+}
+
+-- Methods via impl block
+impl Point {
+    fn init(self, x, y) {
+        self.x = x
+        self.y = y
+    }
+
+    fn display(self) {
+        return "(" + str(self.x) + ", " + str(self.y) + ")"
+    }
+
+    fn distance(self, other) {
+        let dx = self.x - other.x
+        let dy = self.y - other.y
+        return sqrt(float(dx * dx + dy * dy))
+    }
+
+    fn add(self, other) {
+        return Point(self.x + other.x, self.y + other.y)
+    }
+}
+
+let p1 = Point(3, 4)
+let p2 = Point(6, 8)
+println("p1 = " + p1.display())
+println("p2 = " + p2.display())
+println("Distance: " + str(p1.distance(p2)))
+
+let p3 = p1.add(p2)
+println("p1 + p2 = " + p3.display())
+
+-- Struct with default behavior
+struct Animal {
+    name: str
+    sound: str
+}
+
+impl Animal {
+    fn init(self, name, sound) {
+        self.name = name
+        self.sound = sound
+    }
+
+    fn speak(self) {
+        return self.name + " says " + self.sound + "!"
+    }
+}
+
+let cat = Animal("Cat", "Meow")
+let dog = Animal("Dog", "Woof")
+println(cat.speak())
+println(dog.speak())
+
+-- Struct with methods that return new instances
+struct Vector {
+    x: float
+    y: float
+}
+
+impl Vector {
+    fn init(self, x, y) {
+        self.x = x
+        self.y = y
+    }
+
+    fn magnitude(self) {
+        return sqrt(self.x * self.x + self.y * self.y)
+    }
+
+    fn scale(self, factor) {
+        return Vector(self.x * factor, self.y * factor)
+    }
+
+    fn to_str(self) {
+        return "<" + str(self.x) + ", " + str(self.y) + ">"
+    }
+}
+
+let v = Vector(3.0, 4.0)
+println("v = " + v.to_str())
+println("|v| = " + str(v.magnitude()))
+
+let v2 = v.scale(2.0)
+println("v * 2 = " + v2.to_str())

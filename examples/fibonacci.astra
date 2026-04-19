@@ -1,0 +1,48 @@
+-- ═══════════════════════════════════════════
+-- Fibonacci Sequence
+-- Demonstrates recursion & performance
+-- ═══════════════════════════════════════════
+
+-- Recursive (elegant but slow for large N)
+fn fib_recursive(n) {
+    if n <= 1 { return n }
+    return fib_recursive(n - 1) + fib_recursive(n - 2)
+}
+
+-- Iterative (fast)
+fn fib_iterative(n) {
+    if n <= 1 { return n }
+    mut a = 0
+    mut b = 1
+    for i in range(2, n + 1) {
+        let temp = a + b
+        a = b
+        b = temp
+    }
+    return b
+}
+
+-- Print first 20 fibonacci numbers
+println("Fibonacci Sequence (first 20):")
+println("-" * 30)
+
+for i in range(20) {
+    println("  fib(" + str(i) + ") = " + str(fib_iterative(i)))
+}
+
+-- Benchmark recursive vs iterative
+println("")
+println("Benchmarking fib(30)...")
+let start = time()
+let result = fib_recursive(30)
+let elapsed = time() - start
+
+println("  Recursive: fib(30) = " + str(result))
+println("  Time: " + str(elapsed) + "s")
+
+let start2 = time()
+let result2 = fib_iterative(30)
+let elapsed2 = time() - start2
+
+println("  Iterative: fib(30) = " + str(result2))
+println("  Time: " + str(elapsed2) + "s")

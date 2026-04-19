@@ -1,0 +1,69 @@
+-- ═══════════════════════════════════════════
+-- Astra Test: Lists
+-- ═══════════════════════════════════════════
+
+-- Create a list
+let numbers = [1, 2, 3, 4, 5]
+println("Numbers: " + str(numbers))
+println("Length: " + str(len(numbers)))
+
+-- Indexing
+println("First: " + str(numbers[0]))
+println("Last: " + str(numbers[-1]))
+
+-- List methods
+mut items = [3, 1, 4, 1, 5, 9]
+items.push(2)
+println("After push: " + str(items))
+
+let popped = items.pop()
+println("Popped: " + str(popped))
+
+-- Contains
+println("Contains 4: " + str(items.contains(4)))
+println("Contains 7: " + str(items.contains(7)))
+
+-- Iterate
+println("Squares:")
+for n in numbers {
+    println("  " + str(n) + "^2 = " + str(n * n))
+}
+
+-- List concatenation
+let a = [1, 2, 3]
+let b = [4, 5, 6]
+let c = a + b
+println("Concatenated: " + str(c))
+
+-- Range
+let r = range(5)
+println("Range(5): " + str(r))
+
+-- Sorted
+let unsorted = [5, 2, 8, 1, 9, 3]
+let s = sorted(unsorted)
+println("Sorted: " + str(s))
+
+-- Reversed
+let rev = reversed(numbers)
+println("Reversed: " + str(rev))
+
+-- Sum
+println("Sum: " + str(sum(numbers)))
+
+-- Enumerate
+let colors = ["red", "green", "blue"]
+for pair in enumerate(colors) {
+    println("  " + str(pair[0]) + ": " + pair[1])
+}
+
+-- Zip
+let names = ["Alice", "Bob", "Charlie"]
+let ages = [25, 30, 35]
+for pair in zip(names, ages) {
+    println("  " + pair[0] + " is " + str(pair[1]))
+}
+
+-- Join
+let words = ["Hello", "beautiful", "world"]
+println(join(words, " "))

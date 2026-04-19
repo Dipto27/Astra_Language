@@ -1,0 +1,61 @@
+-- ═══════════════════════════════════════════
+-- Astra Test: Strings
+-- ═══════════════════════════════════════════
+
+-- Basic strings
+let hello = "Hello, World!"
+println(hello)
+println("Length: " + str(len(hello)))
+
+-- String methods
+println("Upper: " + hello.upper())
+println("Lower: " + hello.lower())
+println("Contains 'World': " + str(hello.contains("World")))
+println("Contains 'xyz': " + str(hello.contains("xyz")))
+
+-- String indexing
+println("First char: " + hello[0])
+println("Last char: " + hello[-1])
+
+-- String concatenation
+let first = "Astra"
+let second = " Language"
+println("Concat: " + first + second)
+
+-- String repetition
+let line = "-" * 20
+println(line)
+
+-- String split
+let csv = "apple,banana,cherry,date"
+let parts = csv.split(",")
+println("Split: " + str(parts))
+println("Parts count: " + str(len(parts)))
+
+-- Join
+let joined = join(parts, " | ")
+println("Joined: " + joined)
+
+-- String iteration
+let word = "Astra"
+println("Characters:")
+for ch in word {
+    println("  " + ch)
+}
+
+-- String comparison
+println("abc < def: " + str("abc" < "def"))
+println("xyz > abc: " + str("xyz" > "abc"))
+println("hello == hello: " + str("hello" == "hello"))
+
+-- Escape sequences
+println("Tab:\there")
+println("Newline in string:")
+println("Line 1\nLine 2")
+
+-- String conversion
+println("int to str: " + str(42))
+println("float to str: " + str(3.14))
+println("bool to str: " + str(true))
+println("str to int: " + str(int("123")))
+println("str to float: " + str(float("3.14")))

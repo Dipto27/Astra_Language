@@ -1,0 +1,50 @@
+-- ═══════════════════════════════════════════
+-- Calculator
+-- Interactive calculator in Astra
+-- ═══════════════════════════════════════════
+
+println("═══════════════════════════")
+println("  Astra Calculator v1.0")
+println("═══════════════════════════")
+println("")
+
+fn calculate(a, op, b) {
+    match op {
+        "+" => { return a + b }
+        "-" => { return a - b }
+        "*" => { return a * b }
+        "/" => {
+            if b == 0 {
+                println("  Error: Division by zero!")
+                return none
+            }
+            return a / b
+        }
+        "%" => { return a % b }
+        "**" => { return a ** b }
+        _ => {
+            println("  Unknown operator: " + op)
+            return none
+        }
+    }
+}
+
+-- Demo calculations
+let operations = [
+    [10, "+", 5],
+    [20, "-", 7],
+    [6, "*", 8],
+    [100, "/", 3],
+    [17, "%", 5],
+    [2, "**", 10]
+]
+
+for op in operations {
+    let result = calculate(op[0], op[1], op[2])
+    if result != none {
+        println("  " + str(op[0]) + " " + op[1] + " " + str(op[2]) + " = " + str(result))
+    }
+}
+
+println("")
+println("Done!")

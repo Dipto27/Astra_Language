@@ -1,0 +1,62 @@
+-- ═══════════════════════════════════════════
+-- Astra Test: Functions & Closures
+-- ═══════════════════════════════════════════
+
+-- Basic function
+fn greet(name) {
+    return "Hello, " + name + "!"
+}
+println(greet("World"))
+
+-- Function with multiple params
+fn add(a, b) {
+    return a + b
+}
+println("3 + 5 = " + str(add(3, 5)))
+
+-- Recursive function (fibonacci)
+fn fib(n) {
+    if n <= 1 {
+        return n
+    }
+    return fib(n - 1) + fib(n - 2)
+}
+println("fib(10) = " + str(fib(10)))
+
+-- Higher-order function
+fn apply(f, x) {
+    return f(x)
+}
+
+fn double(x) {
+    return x * 2
+}
+
+println("double(21) = " + str(apply(double, 21)))
+
+-- Closures
+fn make_counter() {
+    mut count = 0
+    fn increment() {
+        count += 1
+        return count
+    }
+    return increment
+}
+
+let counter = make_counter()
+println("Count: " + str(counter()))
+println("Count: " + str(counter()))
+println("Count: " + str(counter()))
+
+-- Lambda / anonymous function
+let square = fn(x) => x * x
+println("square(7) = " + str(square(7)))
+
+-- Function as first-class value
+fn compose(f, g) {
+    return fn(x) => f(g(x))
+}
+
+let double_then_square = compose(square, double)
+println("double_then_square(3) = " + str(double_then_square(3)))
